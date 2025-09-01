@@ -28,23 +28,11 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.blue,
       ),
       body: Center(
-        child: Text(
-          'This is a static Home Page',
-
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.green,
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.blue,
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Static Footer Text',
-            style: TextStyle(
-              color: Colors.white,
+        child: Container(
+          width: 320,
+          height: 450,
+          child: Image(
+            image: AssetImage('assets/images.jpeg'
             ),
           ),
         ),

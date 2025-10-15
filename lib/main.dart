@@ -5,31 +5,51 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final List<String> fruits = ['Jev', 'Jay', 'Leonard', 'Raymundo', 'Francis', 'Jumlord', 'Jomari', 'Jomel', 'Jomike', 'Jomarie'];
+  final List<Map<String, String>> pets = [
+  {'name': 'Buddy', 'type': 'Dog'},
+  {'name': 'Mittens', 'type': 'Cat'},
+  {'name': 'Chirpy', 'type': 'Bird'},
+  {'name': 'Nemo', 'type': 'Fish'},
+  {'name': 'Lolong', 'type': 'Crocodile'},
+  {'name': 'Squidward', 'type': 'Octopos'},
+  {'name': 'Shrek', 'type': 'Monster'},
+  {'name': 'Boots', 'type': 'Monkey'},
+  {'name': 'Son Guko', 'type': 'Saiyan'},
+  {'name': 'Luffy', 'type': 'Pirate'},
+  {'name': 'Oldenaria', 'type': 'CodeKing'},
+  {'name': 'Jev', 'type': 'Skater'},
+  {'name': 'Jarl', 'type': 'TypeKita'},
+];
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Friend Names'),
+          title: const Text('Pet Adoption'),
         ),
         body: ListView.builder(
-          itemCount: fruits.length,
+          itemCount: pets.length,
           itemBuilder: (context, index) {
-            final fruit = fruits[index];
-            return Card(
-              margin: const EdgeInsets.symmetric(vertical:8, horizontal: 16),
-              child: ListTile(
-                leading: const Icon(Icons.local_grocery_store),
-                title: Text(fruit),
-                subtitle: Text('Item Number: ${index + 1}'),
-                onTap: (){
+            final pet = pets[index];
+            return ListTile(
+              leading: const Icon(Icons.pets),
+              title: Text(pet['name']!),
+              subtitle: Text(pet['type']!),
+              trailing: TextButton(
+                child: const Text('Adopt'),
+                onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('You tapped $fruit!'))
+                    SnackBar(content: Text('You adopted ${pet['name']!}!')),
                   );
                 },
               ),
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('You selected ${pet['name']!} – ${pet['type']!}.')),
+                );
+              },
             );
           },
         ),
